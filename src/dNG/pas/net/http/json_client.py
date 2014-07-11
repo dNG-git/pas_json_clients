@@ -6,7 +6,7 @@ direct PAS
 Python Application Services
 ----------------------------------------------------------------------------
 (C) direct Netware Group - All rights reserved
-http://www.direct-netware.de/redirect.py?pas;http;json_client
+http://www.direct-netware.de/redirect.py?pas;json_client
 
 This Source Code Form is subject to the terms of the Mozilla Public License,
 v. 2.0. If a copy of the MPL was not distributed with this file, You can
@@ -14,7 +14,7 @@ obtain one at http://mozilla.org/MPL/2.0/.
 ----------------------------------------------------------------------------
 http://www.direct-netware.de/redirect.py?licenses;mpl2
 ----------------------------------------------------------------------------
-#echo(pasHttpJsonClientsVersion)#
+#echo(pasJsonClientsVersion)#
 #echo(__FILEPATH__)#
 """
 
@@ -30,7 +30,7 @@ class JsonClient(Client):
 
 :author:     direct Netware Group
 :copyright:  (C) direct Netware Group - All rights reserved
-:package:    pas.http
+:package:    pas
 :subpackage: json_clients
 :since:      v0.1.00
 :license:    http://www.direct-netware.de/redirect.py?licenses;mpl2
@@ -74,7 +74,7 @@ Initializes an HTTP response object based on the received raw data.
 		elif ("body_reader" in raw_response):
 		#
 			content_type = raw_response['headers'].get("content_type")
-			if (content_type != None and content_type.lower() != "application/json"): raise IOException("Response content is not of type JSON")
+			if (content_type != None and content_type.split(";", 1)[0].lower() != "application/json"): raise IOException("Response content is not of type JSON")
 			_return._set_body_reader(raw_response['body_reader'])
 		#
 

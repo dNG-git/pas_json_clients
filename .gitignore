@@ -1,7 +1,7 @@
-_extras
 __py*
 .*
 *.pyc
-make*.py*
 nbproject
-pas_http_json_client.*
+/_extras
+/make*.py*
+/pas_json_clients.*

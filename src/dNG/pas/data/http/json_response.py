@@ -6,7 +6,7 @@ direct PAS
 Python Application Services
 ----------------------------------------------------------------------------
 (C) direct Netware Group - All rights reserved
-http://www.direct-netware.de/redirect.py?pas;http;json_client
+http://www.direct-netware.de/redirect.py?pas;json_client
 
 This Source Code Form is subject to the terms of the Mozilla Public License,
 v. 2.0. If a copy of the MPL was not distributed with this file, You can
@@ -14,7 +14,7 @@ obtain one at http://mozilla.org/MPL/2.0/.
 ----------------------------------------------------------------------------
 http://www.direct-netware.de/redirect.py?licenses;mpl2
 ----------------------------------------------------------------------------
-#echo(pasHttpJsonClientsVersion)#
+#echo(pasJsonClientsVersion)#
 #echo(__FILEPATH__)#
 """
 
@@ -31,7 +31,7 @@ HTTP JSON response object handling decoding in the background.
 
 :author:     direct Netware Group
 :copyright:  (C) direct Netware Group - All rights reserved
-:package:    pas.http
+:package:    pas
 :subpackage: json_clients
 :since:      v0.1.00
 :license:    http://www.direct-netware.de/redirect.py?licenses;mpl2

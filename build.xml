@@ -4,7 +4,7 @@ direct PAS
 Python Application Services
 
 (C) direct Netware Group - All rights reserved
-http://www.direct-netware.de/redirect.py?pas;http;json_clients
+http://www.direct-netware.de/redirect.py?pas;json_clients
 
 This Source Code Form is subject to the terms of the Mozilla Public License,
 v. 2.0. If a copy of the MPL was not distributed with this file, You can
@@ -12,7 +12,7 @@ obtain one at http://mozilla.org/MPL/2.0/.
 
 http://www.direct-netware.de/redirect.php?licenses;mpl2
 // -->
-<project name="pas_http_json_clients" default="compile.src">
+<project name="pas_json_clients" default="compile.src">
 	<dirname property="pas.basedir" file="${ant.file}" />
 	<property file="${pas.basedir}/_extras/build.properties" />
 
