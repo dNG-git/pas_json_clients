@@ -66,7 +66,7 @@ Read a specified node including all children if applicable.
 		"""
 
 		if (self.json_resource == None): self.read()
-		return (self.json_resource.export_cache() if (node_path == None) else self.json_resource.get_node(node_path))
+		return (self.json_resource.get() if (node_path == None) else self.json_resource.get_node(node_path))
 	#
 
 	def read(self, size = -1):

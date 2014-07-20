@@ -50,7 +50,6 @@ Returns a connection to the HTTP server.
 
 		if (self.headers == None): self.headers = { }
 		if ("ACCEPT" not in self.headers): self.set_header("Accept", "application/json")
-		if ("CONTENT-TYPE" not in self.headers): self.set_header("Content-Type", "application/json")
 
 		return _return
 	#
