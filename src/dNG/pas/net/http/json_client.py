@@ -6,7 +6,7 @@ direct PAS
 Python Application Services
 ----------------------------------------------------------------------------
 (C) direct Netware Group - All rights reserved
-http://www.direct-netware.de/redirect.py?pas;json_client
+http://www.direct-netware.de/redirect.py?pas;json_clients
 
 This Source Code Form is subject to the terms of the Mozilla Public License,
 v. 2.0. If a copy of the MPL was not distributed with this file, You can
@@ -37,21 +37,24 @@ class JsonClient(Client):
              Mozilla Public License, v. 2.0
 	"""
 
-	def _get_connection(self):
+	def request(self, method, separator = ";", params = None, data = None):
 	#
 		"""
-Returns a connection to the HTTP server.
+Call a given request method on the connected HTTP server.
 
-:return: (mixed) Response data; Exception on error
-:since:  v0.1.00
+:param method: HTTP method
+:param separator: Query parameter separator
+:param params: Parsed query parameters as str
+:param data: HTTP body
+
+:return: (dict) Response data; 'body' may contain the catched exception
+:since:  v0.1.01
 		"""
-
-		_return = Client._get_connection(self)
 
 		if (self.headers == None): self.headers = { }
 		if ("ACCEPT" not in self.headers): self.set_header("Accept", "application/json")
 
-		return _return
+		return Client.request(self, method, separator, params, data)
 	#
 
 	def _init_response(self, raw_response):
