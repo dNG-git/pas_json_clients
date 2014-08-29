@@ -1,0 +1,2 @@
+-e git+http://git.direct-netware.de/py/rfc_http_client/#egg=pyRfcHttpClient
+-e git+http://git.direct-netware.de/pas/core/#egg=pas_core
