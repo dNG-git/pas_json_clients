@@ -49,7 +49,7 @@ Call a given request method on the connected HTTP server.
 :since:  v0.1.01
 		"""
 
-		if (self.headers == None): self.headers = { }
+		if (self.headers is None): self.headers = { }
 		if ("CONTENT-TYPE" not in self.headers): self.set_header("Content-Type", "application/json; charset=utf-8")
 
 		return JsonClient.request(self, method, separator, params, data)

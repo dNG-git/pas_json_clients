@@ -65,8 +65,8 @@ Read a specified node including all children if applicable.
 :since:  v0.1.00
 		"""
 
-		if (self.json_resource == None): self.read()
-		return (self.json_resource.get() if (node_path == None) else self.json_resource.get_node(node_path))
+		if (self.json_resource is None): self.read()
+		return (self.json_resource.get() if (node_path is None) else self.json_resource.get_node(node_path))
 	#
 
 	def read(self, size = -1):
@@ -83,13 +83,13 @@ transfer-encoded data is handled automatically.
 
 		if (size > 0): raise OperationNotSupportedException()
 
-		if (self.json_resource == None):
+		if (self.json_resource is None):
 		#
 			_return = Binary.str(self.body_reader())
 			self.body_reader = None
 
 			self.json_resource = JsonResource(False)
-			if (self.json_resource.json_to_data(_return) == None): raise ValueException("Data received is not a valid JSON encoded response")
+			if (self.json_resource.json_to_data(_return) is None): raise ValueException("Data received is not a valid JSON encoded response")
 		#
 		else: _return = Binary.bytes("")
 

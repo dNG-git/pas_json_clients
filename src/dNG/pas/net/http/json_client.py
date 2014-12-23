@@ -51,7 +51,7 @@ Call a given request method on the connected HTTP server.
 :since:  v0.1.01
 		"""
 
-		if (self.headers == None): self.headers = { }
+		if (self.headers is None): self.headers = { }
 		if ("ACCEPT" not in self.headers): self.set_header("Accept", "application/json")
 
 		return Client.request(self, method, separator, params, data)
@@ -76,7 +76,11 @@ Initializes an HTTP response object based on the received raw data.
 		elif ("body_reader" in raw_response):
 		#
 			content_type = raw_response['headers'].get("content_type")
-			if (content_type != None and content_type.split(";", 1)[0].lower() != "application/json"): raise IOException("Response content is not of type JSON")
+
+			if (content_type is not None
+			    and content_type.split(";", 1)[0].lower() != "application/json"
+			   ): raise IOException("Response content is not of type JSON")
+
 			_return._set_body_reader(raw_response['body_reader'])
 		#
 
