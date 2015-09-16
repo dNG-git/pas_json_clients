@@ -69,19 +69,19 @@ Read a specified node including all children if applicable.
 		return (self.json_resource.get() if (node_path is None) else self.json_resource.get_node(node_path))
 	#
 
-	def read(self, size = -1):
+	def read(self, n = 0):
 	#
 		"""
 Reads data using the given body reader and parse the JSON response. Chunked
 transfer-encoded data is handled automatically.
 
-:param size: Bytes to read
+:param n: Bytes to read
 
 :return: (bytes) Data received
 :since:  v0.1.00
 		"""
 
-		if (size > 0): raise OperationNotSupportedException()
+		if (n > 0): raise OperationNotSupportedException()
 
 		if (self.json_resource is None):
 		#
