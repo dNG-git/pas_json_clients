@@ -18,22 +18,23 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 #echo(__FILEPATH__)#
 """
 
+from dNG.data.binary import Binary
 from dNG.data.json_resource import JsonResource
-from dNG.data.http.response import Response
-from dNG.pas.data.binary import Binary
-from dNG.pas.runtime.operation_not_supported_exception import OperationNotSupportedException
-from dNG.pas.runtime.value_exception import ValueException
+from dNG.runtime.operation_not_supported_exception import OperationNotSupportedException
+from dNG.runtime.value_exception import ValueException
+
+from .response import Response
 
 class JsonResponse(Response):
 #
 	"""
 HTTP JSON response object handling decoding in the background.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: json_clients
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
 	"""
@@ -43,7 +44,7 @@ HTTP JSON response object handling decoding in the background.
 		"""
 Constructor __init__(JsonResponse)
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		Response.__init__(self)
@@ -62,7 +63,7 @@ Read a specified node including all children if applicable.
 :param node_path: Path to the node - delimiter is space; None for root
 
 :return: (mixed) JSON data; None on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (self.json_resource is None): self.read()
@@ -78,7 +79,7 @@ transfer-encoded data is handled automatically.
 :param n: Bytes to read
 
 :return: (bytes) Data received
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (n > 0): raise OperationNotSupportedException()

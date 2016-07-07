@@ -18,9 +18,10 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 #echo(__FILEPATH__)#
 """
 
-from dNG.net.http.client import Client
-from dNG.pas.data.http.json_response import JsonResponse
-from dNG.pas.runtime.io_exception import IOException
+from dNG.data.http.json_response import JsonResponse
+from dNG.runtime.io_exception import IOException
+
+from .client import Client
 
 class JsonClient(Client):
 #
@@ -28,11 +29,11 @@ class JsonClient(Client):
 "JsonClient" provides an HTTP client that expects "Content-Type" to be
 "application/json".
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: json_clients
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
 	"""
@@ -48,7 +49,7 @@ Call a given request method on the connected HTTP server.
 :param data: HTTP body
 
 :return: (dict) Response data; 'body' may contain the catched exception
-:since:  v0.1.01
+:since:  v0.2.00
 		"""
 
 		if (self.headers is None): self.headers = { }
@@ -65,7 +66,7 @@ Initializes an HTTP response object based on the received raw data.
 :param raw_response: Raw response dict
 
 :return: (object) Response object
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = JsonResponse()

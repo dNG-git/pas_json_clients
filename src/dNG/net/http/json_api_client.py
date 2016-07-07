@@ -19,6 +19,7 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 """
 
 from dNG.data.json_resource import JsonResource
+
 from .json_client import JsonClient
 
 class JsonApiClient(JsonClient):
@@ -26,11 +27,11 @@ class JsonApiClient(JsonClient):
 	"""
 "JsonApiClient" is used to communicate with JSON aware endpoint URLs.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: json_clients
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
 	"""
@@ -46,7 +47,7 @@ Call a given request method on the connected HTTP server.
 :param data: HTTP body
 
 :return: (dict) Response data; 'body' may contain the catched exception
-:since:  v0.1.01
+:since:  v0.2.00
 		"""
 
 		if (self.headers is None): self.headers = { }
@@ -63,7 +64,7 @@ Encodes the given data dict as JSON.
 :param data: Request data dict
 
 :return: (str) JSON representation
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return JsonResource().data_to_json(data)
@@ -79,7 +80,7 @@ Do a DELETE request on the connected HTTP server.
 :param data: HTTP body
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (isinstance(data, dict)): data = self._json_encode(data)
@@ -96,7 +97,7 @@ Do a PATCH request on the connected HTTP server.
 :param separator: Query parameter separator
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (isinstance(data, dict)): data = self._json_encode(data)
@@ -113,7 +114,7 @@ Do a POST request on the connected HTTP server.
 :param separator: Query parameter separator
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (isinstance(data, dict)): data = self._json_encode(data)
@@ -130,7 +131,7 @@ Do a PUT request on the connected HTTP server.
 :param separator: Query parameter separator
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (isinstance(data, dict)): data = self._json_encode(data)
@@ -147,7 +148,7 @@ Do a OPTIONS request on the connected HTTP server.
 :param data: HTTP body
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (isinstance(data, dict)): data = self._json_encode(data)
