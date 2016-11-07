@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -24,8 +23,7 @@ from dNG.runtime.io_exception import IOException
 from .client import Client
 
 class JsonClient(Client):
-#
-	"""
+    """
 "JsonClient" provides an HTTP client that expects "Content-Type" to be
 "application/json".
 
@@ -36,11 +34,10 @@ class JsonClient(Client):
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
-	"""
+    """
 
-	def request(self, method, separator = ";", params = None, data = None):
-	#
-		"""
+    def request(self, method, separator = ";", params = None, data = None):
+        """
 Call a given request method on the connected HTTP server.
 
 :param method: HTTP method
@@ -50,43 +47,39 @@ Call a given request method on the connected HTTP server.
 
 :return: (dict) Response data; 'body' may contain the catched exception
 :since:  v0.2.00
-		"""
+        """
 
-		if (self.headers is None): self.headers = { }
-		if ("ACCEPT" not in self.headers): self.set_header("Accept", "application/json")
+        if (self.headers is None): self.headers = { }
+        if ("ACCEPT" not in self.headers): self.set_header("Accept", "application/json")
 
-		return Client.request(self, method, separator, params, data)
-	#
+        return Client.request(self, method, separator, params, data)
+    #
 
-	def _init_response(self, raw_response):
-	#
-		"""
+    def _init_response(self, raw_response):
+        """
 Initializes an HTTP response object based on the received raw data.
 
 :param raw_response: Raw response dict
 
 :return: (object) Response object
 :since:  v0.2.00
-		"""
+        """
 
-		_return = JsonResponse()
-		_return._set_code(raw_response['code'])
-		_return._set_headers(raw_response['headers'])
+        _return = JsonResponse()
+        _return._set_code(raw_response['code'])
+        _return._set_headers(raw_response['headers'])
 
-		if (isinstance(raw_response['body'], Exception)): _return._set_exception(raw_response['body'])
-		elif ("body_reader" in raw_response):
-		#
-			content_type = raw_response['headers'].get("content_type")
+        if (isinstance(raw_response['body'], Exception)): _return._set_exception(raw_response['body'])
+        elif ("body_reader" in raw_response):
+            content_type = raw_response['headers'].get("content_type")
 
-			if (content_type is not None
-			    and content_type.split(";", 1)[0].lower() != "application/json"
-			   ): raise IOException("Response content is not of type JSON")
+            if (content_type is not None
+                and content_type.split(";", 1)[0].lower() != "application/json"
+               ): raise IOException("Response content is not of type JSON")
 
-			_return._set_body_reader(raw_response['body_reader'])
-		#
+            _return._set_body_reader(raw_response['body_reader'])
+        #
 
-		return _return
-	#
+        return _return
+    #
 #
-
-##j## EOF

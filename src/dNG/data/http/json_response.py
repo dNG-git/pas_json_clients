@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -26,8 +25,7 @@ from dNG.runtime.value_exception import ValueException
 from .response import Response
 
 class JsonResponse(Response):
-#
-	"""
+    """
 HTTP JSON response object handling decoding in the background.
 
 :author:     direct Netware Group et al.
@@ -37,42 +35,39 @@ HTTP JSON response object handling decoding in the background.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
-	"""
+    """
 
-	def __init__(self):
-	#
-		"""
+    def __init__(self):
+        """
 Constructor __init__(JsonResponse)
 
 :since: v0.2.00
-		"""
+        """
 
-		Response.__init__(self)
+        Response.__init__(self)
 
-		self.json_resource = None
-		"""
+        self.json_resource = None
+        """
 JSON resource instance
-		"""
-	#
+        """
+    #
 
-	def get(self, node_path = None):
-	#
-		"""
+    def get(self, node_path = None):
+        """
 Read a specified node including all children if applicable.
 
 :param node_path: Path to the node - delimiter is space; None for root
 
 :return: (mixed) JSON data; None on error
 :since:  v0.2.00
-		"""
+        """
 
-		if (self.json_resource is None): self.read()
-		return (self.json_resource.get() if (node_path is None) else self.json_resource.get_node(node_path))
-	#
+        if (self.json_resource is None): self.read()
+        return (self.json_resource.get() if (node_path is None) else self.json_resource.get_node(node_path))
+    #
 
-	def read(self, n = 0):
-	#
-		"""
+    def read(self, n = 0):
+        """
 Reads data using the given body reader and parse the JSON response. Chunked
 transfer-encoded data is handled automatically.
 
@@ -80,22 +75,18 @@ transfer-encoded data is handled automatically.
 
 :return: (bytes) Data received
 :since:  v0.2.00
-		"""
+        """
 
-		if (n > 0): raise OperationNotSupportedException()
+        if (n > 0): raise OperationNotSupportedException()
 
-		if (self.json_resource is None):
-		#
-			_return = Binary.str(self.body_reader())
-			self.body_reader = None
+        if (self.json_resource is None):
+            _return = Binary.str(self.body_reader())
+            self.body_reader = None
 
-			self.json_resource = JsonResource(False)
-			if (self.json_resource.json_to_data(_return) is None): raise ValueException("Data received is not a valid JSON encoded response")
-		#
-		else: _return = Binary.bytes("")
+            self.json_resource = JsonResource(False)
+            if (self.json_resource.json_to_data(_return) is None): raise ValueException("Data received is not a valid JSON encoded response")
+        else: _return = Binary.bytes("")
 
-		return _return
-	#
+        return _return
+    #
 #
-
-##j## EOF
