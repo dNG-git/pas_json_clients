@@ -17,6 +17,8 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.data.json_resource import JsonResource
 
 from .json_client import JsonClient
@@ -46,6 +48,8 @@ Call a given request method on the connected HTTP server.
 :return: (dict) Response data; 'body' may contain the catched exception
 :since:  v0.2.00
         """
+
+        # pylint: disable=attribute-defined-outside-init
 
         if (self.headers is None): self.headers = { }
         if ("CONTENT-TYPE" not in self.headers): self.set_header("Content-Type", "application/json; charset=utf-8")
@@ -78,6 +82,8 @@ Do a DELETE request on the connected HTTP server.
 :since:  v0.2.00
         """
 
+        # pylint: disable=no-member
+
         if (isinstance(data, dict)): data = self._json_encode(data)
         return JsonClient.request_delete(self, params, separator, data)
     #
@@ -93,6 +99,8 @@ Do a PATCH request on the connected HTTP server.
 :return: (mixed) Response data; Exception on error
 :since:  v0.2.00
         """
+
+        # pylint: disable=no-member
 
         if (isinstance(data, dict)): data = self._json_encode(data)
         return JsonClient.request_patch(self, data, params, separator)
@@ -110,6 +118,8 @@ Do a POST request on the connected HTTP server.
 :since:  v0.2.00
         """
 
+        # pylint: disable=no-member
+
         if (isinstance(data, dict)): data = self._json_encode(data)
         return JsonClient.request_post(self, data, params, separator)
     #
@@ -126,6 +136,8 @@ Do a PUT request on the connected HTTP server.
 :since:  v0.2.00
         """
 
+        # pylint: disable=no-member
+
         if (isinstance(data, dict)): data = self._json_encode(data)
         return JsonClient.request_put(self, data, params, separator)
     #
@@ -141,6 +153,8 @@ Do a OPTIONS request on the connected HTTP server.
 :return: (mixed) Response data; Exception on error
 :since:  v0.2.00
         """
+
+        # pylint: disable=no-member
 
         if (isinstance(data, dict)): data = self._json_encode(data)
         return JsonClient.request_options(self, params, separator, data)

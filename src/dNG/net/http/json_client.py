@@ -17,6 +17,8 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.data.http.json_response import JsonResponse
 from dNG.runtime.io_exception import IOException
 
@@ -49,6 +51,8 @@ Call a given request method on the connected HTTP server.
 :since:  v0.2.00
         """
 
+        # pylint: disable=attribute-defined-outside-init
+
         if (self.headers is None): self.headers = { }
         if ("ACCEPT" not in self.headers): self.set_header("Accept", "application/json")
 
@@ -64,6 +68,8 @@ Initializes an HTTP response object based on the received raw data.
 :return: (object) Response object
 :since:  v0.2.00
         """
+
+        # pylint: disable=protected-access
 
         _return = JsonResponse()
         _return._set_code(raw_response['code'])

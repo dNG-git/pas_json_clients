@@ -17,6 +17,8 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.data.binary import Binary
 from dNG.data.json_resource import JsonResource
 from dNG.runtime.operation_not_supported_exception import OperationNotSupportedException
@@ -36,6 +38,8 @@ HTTP JSON response object handling decoding in the background.
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
     """
+
+    # pylint: disable=invalid-name
 
     def __init__(self):
         """
@@ -76,6 +80,8 @@ transfer-encoded data is handled automatically.
 :return: (bytes) Data received
 :since:  v0.2.00
         """
+
+        # pylint: disable=access-member-before-definition, attribute-defined-outside-init, not-callable, used-before-assignment
 
         if (n > 0): raise OperationNotSupportedException()
 
