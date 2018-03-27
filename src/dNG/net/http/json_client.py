@@ -33,7 +33,7 @@ class JsonClient(Client):
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: json_clients
-:since:      v0.2.00
+:since:      v1.0.0
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
     """
@@ -48,7 +48,7 @@ Call a given request method on the connected HTTP server.
 :param data: HTTP body
 
 :return: (dict) Response data; 'body' may contain the catched exception
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=attribute-defined-outside-init
@@ -66,7 +66,7 @@ Initializes an HTTP response object based on the received raw data.
 :param raw_response: Raw response dict
 
 :return: (object) Response object
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=protected-access

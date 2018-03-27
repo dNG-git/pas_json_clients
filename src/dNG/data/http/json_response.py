@@ -34,7 +34,7 @@ HTTP JSON response object handling decoding in the background.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: json_clients
-:since:      v0.2.00
+:since:      v1.0.0
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
     """
@@ -45,7 +45,7 @@ HTTP JSON response object handling decoding in the background.
         """
 Constructor __init__(JsonResponse)
 
-:since: v0.2.00
+:since: v1.0.0
         """
 
         Response.__init__(self)
@@ -63,11 +63,11 @@ Read a specified node including all children if applicable.
 :param node_path: Path to the node - delimiter is space; None for root
 
 :return: (mixed) JSON data; None on error
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         if (self.json_resource is None): self.read()
-        return (self.json_resource.get() if (node_path is None) else self.json_resource.get_node(node_path))
+        return (self.json_resource.data if (node_path is None) else self.json_resource.get_node(node_path))
     #
 
     def read(self, n = 0):
@@ -78,7 +78,7 @@ transfer-encoded data is handled automatically.
 :param n: Bytes to read
 
 :return: (bytes) Data received
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=access-member-before-definition, attribute-defined-outside-init, not-callable, used-before-assignment
@@ -86,11 +86,14 @@ transfer-encoded data is handled automatically.
         if (n > 0): raise OperationNotSupportedException()
 
         if (self.json_resource is None):
-            _return = Binary.str(self.body_reader())
+            json_data = self.body_reader()
             self.body_reader = None
 
-            self.json_resource = JsonResource(False)
-            if (self.json_resource.json_to_data(_return) is None): raise ValueException("Data received is not a valid JSON encoded response")
+            self.json_resource = JsonResource()
+            self.json_resource.parse(Binary.str(json_data))
+            if (self.json_resource.data is None): raise ValueException("Data received is not a valid JSON encoded response")
+
+            _return = Binary.bytes(json_data)
         else: _return = Binary.bytes("")
 
         return _return

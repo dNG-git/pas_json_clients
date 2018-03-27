@@ -31,7 +31,7 @@ class JsonApiClient(JsonClient):
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: json_clients
-:since:      v0.2.00
+:since:      v1.0.0
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
     """
@@ -46,7 +46,7 @@ Call a given request method on the connected HTTP server.
 :param data: HTTP body
 
 :return: (dict) Response data; 'body' may contain the catched exception
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=attribute-defined-outside-init
@@ -64,7 +64,7 @@ Encodes the given data dict as JSON.
 :param data: Request data dict
 
 :return: (str) JSON representation
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         return JsonResource().data_to_json(data)
@@ -79,7 +79,7 @@ Do a DELETE request on the connected HTTP server.
 :param data: HTTP body
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=no-member
@@ -97,7 +97,7 @@ Do a PATCH request on the connected HTTP server.
 :param separator: Query parameter separator
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=no-member
@@ -115,7 +115,7 @@ Do a POST request on the connected HTTP server.
 :param separator: Query parameter separator
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=no-member
@@ -133,7 +133,7 @@ Do a PUT request on the connected HTTP server.
 :param separator: Query parameter separator
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=no-member
@@ -151,7 +151,7 @@ Do a OPTIONS request on the connected HTTP server.
 :param data: HTTP body
 
 :return: (mixed) Response data; Exception on error
-:since:  v0.2.00
+:since:  v1.0.0
         """
 
         # pylint: disable=no-member
